@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zacznij Myśleć Samodzielnie</title>
+    <style>
+        /* Reset podstawowych styli */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Czarno-biały design i centrowanie zawartości */
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Główny kontener strony */
+        .container {
+            max-width: 650px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Główny, mocny nagłówek (Hook) */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 3rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        /* Sekcja z prostymi, intrygującymi pytaniami */
+        .questions {
+            margin-bottom: 4rem;
+            text-align: left;
+        }
+
+        .question-item {
+            font-size: 1.25rem;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            padding-left: 15px;
+            border-left: 2px solid #ffffff;
+            opacity: 0.85;
+        }
+
+        /* Przycisk akcji (Call to Action) jako odnośnik */
+        .cta-button {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #000000;
+            text-decoration: none;
+            padding: 18px 32px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+
+        /* Efekt najechania myszką na przycisk */
+        .cta-button:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Dostosowanie do mniejszych ekranów smartfonów */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.85rem;
+                margin-bottom: 2rem;
+            }
+            .question-item {
+                font-size: 1.1rem;
+            }
+            .cta-button {
+                font-size: 1rem;
+                padding: 16px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Nagłówek uderzający w sedno -->
+        <h1>Myślisz, że nie interesujesz się polityką?<br>Ona interesuje się Tobą.</h1>
+
+        <!-- Seria prostych, surowych pytań skłaniających do refleksji -->
+        <div class="questions">
+            <div class="question-item">Dlaczego system, który miał służyć obywatelom, dba głównie o interesy partii?</div>
+            <div class="question-item">Kto naprawdę pociąga za sznurki, kiedy Ty co kilka lat oddajesz swój głos?</div>
+            <div class="question-item">Czy państwo nie powinno wreszcie zacząć należeć do Narodu?</div>
+        </div>
+
+        <!-- Twój personalny przycisk akcji przekierowujący na stronę główną -->
+        <a href="https://wszyscy.org" class="cta-button">
+            Wszyscy WON chce to zmienić.<br>Na naszej stronie wyjaśniamy jak – wejdź do gry i zaangażuj się!
+        </a>
+    </div>
+
+</body>
+</html>
