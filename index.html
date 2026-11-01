@@ -42,24 +42,60 @@
             text-transform: uppercase;
         }
 
-        /* Sekcja z prostymi, intrygującymi pytaniami */
-        .questions {
-            margin-bottom: 4rem;
+        /* Sekcja kroków */
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        /* Stylizacja pojedynczego pytania */
+        .question-item {
+            font-size: 1.6rem;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            padding-left: 15px;
+            border-left: 3px solid #ffffff;
+            opacity: 0.95;
             text-align: left;
         }
 
-        .question-item {
-            font-size: 1.25rem;
-            font-weight: 300;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            padding-left: 15px;
-            border-left: 2px solid #ffffff;
-            opacity: 0.85;
+        /* Kontener na przyciski TAK / NIE */
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 2rem;
         }
 
-        /* Przycisk akcji (Call to Action) jako odnośnik */
-        .cta-button {
+        /* Styl przycisków wyboru */
+        .choice-button {
+            flex: 1;
+            max-width: 200px;
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 4px;
+        }
+
+        /* Efekt najechania i kliknięcia dla TAK/NIE */
+        .choice-button:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* Styl przycisku startowego i finałowego (wypełniony biały) */
+        .cta-button, .start-button {
             display: inline-block;
             background-color: #ffffff;
             color: #000000;
@@ -68,30 +104,38 @@
             font-size: 1.1rem;
             font-weight: 700;
             border-radius: 4px;
+            border: none;
+            cursor: pointer;
             transition: all 0.3s ease;
             line-height: 1.4;
             max-width: 100%;
+            font-family: inherit;
         }
 
-        /* Efekt najechania myszką na przycisk */
-        .cta-button:hover {
+        .cta-button:hover, .start-button:hover {
             background-color: #e0e0e0;
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
         }
 
-        /* Dostosowanie do mniejszych ekranów smartfonów */
+        /* Dostosowanie do mniejszych ekranów */
         @media (max-width: 480px) {
             h1 {
                 font-size: 1.85rem;
                 margin-bottom: 2rem;
             }
             .question-item {
-                font-size: 1.1rem;
+                font-size: 1.25rem;
+                margin-bottom: 2rem;
             }
-            .cta-button {
-                font-size: 1rem;
-                padding: 16px 24px;
+            .btn-group {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+            .choice-button {
+                width: 100%;
+                max-width: none;
             }
         }
     </style>
@@ -99,21 +143,65 @@
 <body>
 
     <div class="container">
-        <!-- Nagłówek uderzający w sedno -->
-        <h1>Myślisz, że nie interesujesz się polityką?<br>Ona interesuje się Tobą.</h1>
-
-        <!-- Seria prostych, surowych pytań skłaniających do refleksji -->
-        <div class="questions">
-            <div class="question-item">Dlaczego system, który miał służyć obywatelom, dba głównie o interesy partii?</div>
-            <div class="question-item">Kto naprawdę pociąga za sznurki, kiedy Ty co kilka lat oddajesz swój głos?</div>
-            <div class="question-item">Czy państwo nie powinno wreszcie zacząć należeć do Narodu?</div>
+        
+        <!-- EKRAN STARTOWY -->
+        <div class="step active" id="step-0">
+            <h1>Myślisz, że nie interesujesz się polityką?<br>Ona interesuje się Tobą.</h1>
+            <button class="start-button" onclick="nextStep(1)">Zacznij myśleć samodzielnie</button>
         </div>
 
-        <!-- Twój personalny przycisk akcji przekierowujący na stronę główną -->
-        <a href="https://wszyscy.org" class="cta-button">
-            Wszyscy WON chce to zmienić.<br>Na naszej stronie wyjaśniamy jak – wejdź do gry i zaangażuj się!
-        </a>
+        <!-- PYTANIE 1 (Dawne pytanie 2) -->
+        <div class="step" id="step-1">
+            <h1>Zastanów się...</h1>
+            <div class="question-item">Kto naprawdę pociąga za sznurki, kiedy Ty co kilka lat oddajesz swój głos?</div>
+            <div class="btn-group">
+                <button class="choice-button" onclick="nextStep(2)">TAK</button>
+                <button class="choice-button" onclick="nextStep(2)">NIE</button>
+            </div>
+        </div>
+
+        <!-- PYTANIE 2 (Dawne pytanie 1) -->
+        <div class="step" id="step-2">
+            <h1>Pomyśl przez chwilę...</h1>
+            <div class="question-item">Dlaczego system, który miał służyć obywatelom, dba głównie o interesy partii?</div>
+            <div class="btn-group">
+                <button class="choice-button" onclick="nextStep(3)">TAK</button>
+                <button class="choice-button" onclick="nextStep(3)">NIE</button>
+            </div>
+        </div>
+
+        <!-- PYTANIE 3 -->
+        <div class="step" id="step-3">
+            <h1>Odpowiedz sobie...</h1>
+            <div class="question-item">Czy państwo nie powinno wreszcie zacząć należeć do Narodu?</div>
+            <div class="btn-group">
+                <button class="choice-button" onclick="nextStep(4)">TAK</button>
+                <button class="choice-button" onclick="nextStep(4)">NIE</button>
+            </div>
+        </div>
+
+        <!-- EKRAN FINAŁOWY (CALL TO ACTION) -->
+        <div class="step" id="step-4">
+            <h1>Czas na zmiany.</h1>
+            <a href="https://wszyscy.org" class="cta-button">
+                Wszyscy WON chce to zmienić.<br>Na naszej stronie wyjaśniamy jak – wejdź do gry i zaangażuj się!
+            </a>
+        </div>
+
     </div>
+
+    <script>
+        function nextStep(stepNumber) {
+            // Ukrywa wszystkie ekrany
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            // Pokazuje tylko ten wywołany numerem
+            document.getElementById('step-' + stepNumber).classList.add('active');
+            // Automatycznie przewija na górę ekranu
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 
 </body>
 </html>
